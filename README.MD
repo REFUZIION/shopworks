@@ -1,2 +1,3 @@
-#SHOPWORKS
-by REFUZION INC.
+#Shopworks
+
+By refuzion INC.
