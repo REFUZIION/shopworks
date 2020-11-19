@@ -58,21 +58,20 @@ switch($_GET["action"]) {
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="" class="navbar-brand"><img src="assets/img/refuzion.jpg" width="75px" height="75px"></a>
+        <a href="index.php" class="navbar-brand"><img src="assets/img/refuzion.jpg" width="75px" height="75px"></a>
         <div class="collapse navbar-collapse justify-content-between" id="navbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="" class="nav-link">home</a>
+                    <a href="index.php" class="nav-link">home</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick=toggleHidden()>Shopping cart</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maak uw keuze</a>
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Extra's</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="" class="dropdown-item">optie 1</a>
-                        <a href="" class="dropdown-item">optie 2</a>
-                        <a href="" class="dropdown-item">optie 3</a>
+                        <a href="https://github.com/REFUZiON312/shopworks" target="_blank" class="dropdown-item">github</a>
+                        <a href="images.php" class="dropdown-item">slider</a>
                     </div>
                 </li>
             </ul>
@@ -110,12 +109,11 @@ switch($_GET["action"]) {
                 <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
                 <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
                 </tr>
-                <?php
+            <?php
                 $total_quantity += $item["quantity"];
                 $total_price += ($item["price"]*$item["quantity"]);
             }
             ?>
-
     <tr>
     <td colspan="2" align="right">Total:</td>
     <td align="right"><?php echo $total_quantity; ?></td>
@@ -131,10 +129,32 @@ switch($_GET["action"]) {
     <?php 
     }
     ?>
+
+
+
+
+
+<?php
+$file = file_get_contents("http://u532431.gluweb.nl/Refuzion-Inc/products2.json");
+$data = json_decode($file, true);
+foreach ($data as $item) {
+?>
+<div class="product-item">
+    <form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
+    <div class="product-image"><img src="<?php echo $item['imgUrl']?>" width="175px" height="175px"></div>
+    <div class="product-tile-footer">
+    <div class="product-title"><?php $item['name']; ?></div>
+    <div class="product-price"><?php echo $item['price']; ?></div>
+    <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+    </div>
+    </form>
 </div>
 
-<div class="container">
-<!-- Slider hier -->
+<?php
+}
+?>
+
+
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
