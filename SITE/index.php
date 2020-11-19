@@ -129,7 +129,7 @@ switch($_GET["action"]) {
     <?php 
     }
     ?>
-
+</div>
 
 
 
@@ -141,7 +141,8 @@ foreach ($data as $item) {
 ?>
 <div class="product-item">
     <form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
-    <div class="product-image"><img src="<?php echo $item['imgUrl']?>" width="175px" height="175px"></div>
+    <!-- <div class="product-image"><img src="<?php echo $item['imgUrl']?>" width="175px" height="175px"></div> -->
+    <div class="product-image"><img src="<?php echo "assets/img/qr-code.png"?>" width="190px" height="190px"></div>
     <div class="product-tile-footer">
     <div class="product-title"><?php $item['name']; ?></div>
     <div class="product-price"><?php echo $item['price']; ?></div>
@@ -149,13 +150,9 @@ foreach ($data as $item) {
     </div>
     </form>
 </div>
-
 <?php
 }
 ?>
-
-
-</div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
     function toggleHidden()
