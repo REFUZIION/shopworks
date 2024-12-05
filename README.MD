@@ -1,5 +1,5 @@
-#Shopworks
+# Shopworks
 
-By refuzion INC.
+By Diederik, Bram, Thijs, Siebe
 
 One big buggy mess :D
